@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff;
+}
+
+header {
+    background-color: #007bff;
+    padding: 10px 0;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar li {
+    margin: 0 15px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+h1 {
+    color: #007bff;
+}
+
+form {
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input, textarea {
+    width: 89%;
+    padding: 17px;
+    margin-bottom: 3px;
+}
+
+input[readonly], textarea[readonly] {
+    background-color: #f0f0f0;
+    cursor: pointer; /* 鼠标指针变为手型 */
+}
+
+input::placeholder, textarea::placeholder {
+    color: #ff0000; /* 示例内容的颜色（红色） */
+    font-size: 16px; /* 示例内容的字体大小 */
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+}
+
+.copy-message {
+    position: absolute;
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="发布和管理永久地址的页面，简化链接分享。">
+    <meta name="keywords" content="永久地址, 链接分享, URL管理">
+    <meta name="author" content="你的名字">
+    <link rel="stylesheet" href="styles.css">
+    <title>蓝色导航永久地址发布页</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="https://bumilu.top">主页</a></li>
+                <li><a href="https://bumilu.top">关于我们</a></li>
+                <li><a href="https://bumilu.top">服务</a></li>
+                <li><a href="https://bumilu.top">联系方式</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h1>发布你的永久地址</h1>
+        <form id="urlForm">
+            <label for="title">标题:</label>
+            <input type="text" id="title" name="title" value="直接访问永久地址的网址丨单击内容即可复制" readonly>
+            
+            <label for="description">描述:</label>
+            <textarea id="description" name="description" readonly>或者发送任意内容到doufuru666@gmail.com获取最新网址</textarea>
+            
+            <label for="permanentUrl">永久地址:</label>
+            <input type="url" id="permanentUrl" name="permanentUrl" value="https://bumilu.top" readonly>
+            
+            <button type="submit">发布</button>
+        </form>
+        
+        <section id="urlList">
+            <h2>已发布的永久地址</h2>
+            <ul id="list"></ul>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© 2024 蓝色导航. 版权所有.</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
