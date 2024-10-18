@@ -38,6 +38,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="发布和管理永久地址的页面，简化链接分享。">
+    <meta name="keywords" content="永久地址, 链接分享, URL管理">
+    <meta name="author" content="你的名字">
     <link rel="stylesheet" href="styles.css">
     <title>蓝色导航永久地址发布页</title>
 </head>
@@ -57,13 +60,13 @@
         <h1>发布你的永久地址</h1>
         <form id="urlForm">
             <label for="title">标题:</label>
-            <input type="text" id="title" name="title" required>
+            <input type="text" id="title" name="title" value="我的永久地址标题" readonly>
             
             <label for="description">描述:</label>
-            <textarea id="description" name="description" required></textarea>
+            <textarea id="description" name="description" readonly>这是一个关于永久地址的描述</textarea>
             
             <label for="permanentUrl">永久地址:</label>
-            <input type="url" id="permanentUrl" name="permanentUrl" required>
+            <input type="url" id="permanentUrl" name="permanentUrl" value="https://bumilu.top" readonly>
             
             <button type="submit">发布</button>
         </form>
@@ -81,6 +84,7 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 ```
 ## CSS 代码
 ```
@@ -131,9 +135,19 @@ label {
 }
 
 input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+    width: 89%;
+    padding: 17px;
+    margin-bottom: 3px;
+}
+
+input[readonly], textarea[readonly] {
+    background-color: #f0f0f0;
+    cursor: pointer; /* 鼠标指针变为手型 */
+}
+
+input::placeholder, textarea::placeholder {
+    color: #ff0000; /* 示例内容的颜色（红色） */
+    font-size: 16px; /* 示例内容的字体大小 */
 }
 
 button {
@@ -154,6 +168,18 @@ footer {
     background-color: #007bff;
     color: white;
 }
+
+.copy-message {
+    position: absolute;
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
 ```
 ## JavaScript 代码
 ```
@@ -172,6 +198,42 @@ document.getElementById('urlForm').addEventListener('submit', function(event) {
     // Reset form
     this.reset();
 });
+
+// 复制功能
+const inputs = document.querySelectorAll('input, textarea');
+inputs.forEach(input => {
+    input.addEventListener('click', function() {
+        this.removeAttribute('readonly'); // 允许编辑以便选择内容
+        this.select();
+        document.execCommand('copy');
+        
+        // 创建弹出提示
+        const message = document.createElement('div');
+        message.className = 'copy-message';
+        message.textContent = '已复制！';
+        document.body.appendChild(message);
+
+        // 设置位置
+        const rect = this.getBoundingClientRect();
+        message.style.left = `${rect.left + window.scrollX}px`;
+        message.style.top = `${rect.top + window.scrollY - 30}px`; // 在输入框上方显示
+
+        // 显示提示并在2秒后移除
+        setTimeout(() => {
+            message.remove();
+        }, 2000);
+        
+        // 设置为只读
+        this.setAttribute('readonly', true);
+    });
+
+    // 双击以输入新内容
+    input.addEventListener('dblclick', function() {
+        this.removeAttribute('readonly'); // 允许用户输入
+        this.focus();
+    });
+});
+
 ```
 ## 结论
 蓝色导航永久地址发布页通过其简洁的设计、清晰的结构和有效的功能，成为了用户发布和管理永久地址的重要工具。通过本文提供的代码示例，开发者可以快速构建一个基本的永久地址发布页，进一步扩展功能以满足特定需求。希望这篇文章能够帮助你更好地理解蓝色导航永久地址发布页的设计与实现。
